@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import gzip
 from sqlalchemy import create_engine
+from io import StringIO
 
 tables = {
 "name_basics" : "https://datasets.imdbws.com/name.basics.tsv.gz",
@@ -17,8 +18,13 @@ tables = {
 engine = create_engine('sqlite:///imdb.db', echo = False)
 
 for t in tables.keys():
+    print("processing " + t)
     req = requests.get(tables[t])
-    file_gz = gzip.decompress(req.text)
-    file_text = ''.join(map(chr, file_gz))
+    print("decompressing")
+    file_gz = gzip.decompress(req.content)
+    file_text = StringIO(''.join(map(chr, file_gz)))
     df = pd.read_csv(file_text, sep = "\t")
+    print("adding to db")
     df.to_sql(t, con=engine, if_exists='replace')
+
+print("done")
