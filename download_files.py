@@ -5,6 +5,7 @@ import gzip
 from sqlalchemy import create_engine
 from io import StringIO
 
+# TODO: Make use of multiple threads to download/load faster
 tables = {
 "name_basics" : "https://datasets.imdbws.com/name.basics.tsv.gz",
 "title_akas" : "https://datasets.imdbws.com/title.akas.tsv.gz",
