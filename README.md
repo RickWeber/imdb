@@ -1,6 +1,6 @@
-# IMDB project
+# IMDB path finding
 
-This is a project to practice SQL using the [IMDB](https://datasets.imdbws.com/)
-dataset. 
+This project is intended to help you find something to watch using the [IMDB API](https://imdb-api.com/). 
 
-Please note, when this script runs, you'll end up with an 8GB database file. 
+To use it, you will need to register at the link above and obtain an API key,
+save it in `sample_secret.config`, then save that file as `secret.config`
