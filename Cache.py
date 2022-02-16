@@ -1,10 +1,15 @@
 #!/usr/bin/python3
+from imdb import get_key
+base_url = "https://imdb-api.com/en/API"
+key = get_key()
 
 class Cache:
-    def __init__(self) -> None:
+    def __init__(self, nodes, paths) -> None:
         self.data = None
+        self.nodes = nodes
+        self.paths = paths
 
-    def check_cache(query):
+    def check_cache(self, query):
         if self.query_has_run(query):
             pass
         elif self.query_intersect(query):
@@ -14,7 +19,8 @@ class Cache:
             return query.run_query()
         pass
 
-    def query_intersect(self, query)
+    def query_intersect(self, query):
+        pass
 
-    def add_to_cache(query):
+    def add_to_cache(self, query):
         pass

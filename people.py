@@ -3,6 +3,9 @@
 import requests
 import pandas as pd
 import json
+from imdb import get_key
+base_url = "https://imdb-api.com/en/API"
+key = get_key()
 base_url = "https://imdb-api.com/en/API"
 # Get data for one person
 def get_person_data(nm):

@@ -1,14 +1,22 @@
 #!/usr/bin/python3
 # A script using the imdb api (https://imdb-api.com/)
 # to navigate the universe of what to watch.
+from msilib.schema import Class
 import requests
-import os
+
+def main():
+    key = get_key()
+    # get call
+    insert_key(make_call(input()))
+
 # API Connection details
-def attempt_connection():
+def get_key():
     if not exists('secret.config'):
         get_key_prompt()
     else:
-        with os.open('secret.config') as file:
+        with open('secret.config') as file:
+            __ = file.readline()
+            key = file.readline().strip()
             key = read(file).strip()
     return key
 
@@ -22,13 +30,18 @@ def get_key_prompt():
     if "n" in quit_now:
         quit()
     else:
-        attempt_connection()
+        get_key()
+
 # Functions to assemble api calls
 def insert_key(api_call):
-    return "https://imdb-api.com/en/" + key
-def api_call():
+    return "https://imdb-api.com/en/" + key + api_call
+
     
-def main():
-    key = attempt_connection()
-    # get call
-    insert_key(make_call(input()))
+def call_to_key(api_call):
+    """given a valid API call, convert it to a string that can be used as a dictionary key."""
+    api_call_key = str(api_call)
+    return api_call_key
+
+def check_cache(api_call, cache):
+    call_to_key(api_call)
+    if cache[api_call]

@@ -3,8 +3,9 @@
 import requests
 import pandas as pd
 import json
+from imdb import get_key
 base_url = "https://imdb-api.com/en/API"
-
+key = get_key()
 # assemble search url
 def make_url(keyword, query):
     search_url_components = [base_url, keyword, key, query]

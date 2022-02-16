@@ -4,7 +4,6 @@ import numpy as np
 import sqlite3
 import random
 from io import StringIO
-engine = create_engine('sqlite:///imdb.db', echo = False)
 
 ##############
 ## TODO:
@@ -73,8 +72,8 @@ def shared_titles(person1, person2):
     return np.intersect1d(titles1, titles2)
 
 def shared_people(title1, title2):
-    person1 = person_from_title(title1)
-    person2 = person_from_title(title2)
+    person1 = people_from_title(title1)
+    person2 = people_from_title(title2)
     return np.intersect1d(person1, person2)
 
 
