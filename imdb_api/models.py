@@ -1,17 +1,19 @@
 from django.db import models
 
-class Person(models.Model):
+class Item(models.Model):
+    last_update = models.DateTimeField('last update')
+    data = models.JSONField('json data')
+
+class Person(Item):
     person_id = models.CharField(max_length=9)
     primaryName = models.CharField(max_length=50)
-    data = None
 
-class Title(models.Model):
+class Title(Item):
     title_id = models.CharField(max_length=9)
-    data = None
 
-class Episode(models.Model):
+class Episode(Item):
     episode_id = models.CharField(max_length=9)
     parent_id = models.ForeignKey(Title, on_delete=models.CASCADE)
     #title_id = models.ForeignKey('Title', on_delete=models.CASCADE)
-    season = models.IntegerField()
-    Episode = models.IntegerField()
+    season_number = models.IntegerField(default=1)
+    episode_number = models.IntegerField(default=1)
